@@ -1,6 +1,7 @@
 import javax.swing.JButton;
 import java.sql.*;
 import Project.ConnectionProvider;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 
@@ -28,7 +29,7 @@ public class ManageRoom extends javax.swing.JFrame {
         DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         dtm.setRowCount(0);
         try{
-            Connection con = java.getCon();
+            Connection con = ConnectionProvider.getCon();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select *from room");
             while(rs.next()){
@@ -45,6 +46,7 @@ public class ManageRoom extends javax.swing.JFrame {
      */
     public ManageRoom() {
         initComponents();
+        tableDetails();
     }
 
     /**
@@ -257,7 +259,37 @@ public class ManageRoom extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String roomnumber
+        String roomnumber=jTextField2.getText();
+        int i=0;
+        try{
+             Connection con = ConnectionProvider.getCon();
+             Statement st=con.createStatement();
+             ResultSet rs=st.executeQuery("select*from room whrer number='"+roomnumber+"'");
+             while(rs.next()){
+                 i=1;
+                if(rs.getString(3).equals("Booked")){
+                    JOptionPane.showMessageDialog(null, "This Room is booked");
+                    clear();
+                }else{
+                    jTextField2.setEditable(false);
+                    jTextField2.setForeground(Color.red);
+                    jTextField2.setBackground(Color.pink);
+                    if(rs.getString(2).equals("Yes"))
+                        jCheckBox2.setSelected(true);
+                    else
+                        jCheckBox2.setSelected(false);
+                    
+                }
+             }
+             if(i==0){
+                 JOptionPane.showMessageDialog(null, "Room Number Does not Exist");
+                 clear();
+             }
+        }
+        catch(Exception e){
+            
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

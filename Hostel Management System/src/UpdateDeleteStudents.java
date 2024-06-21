@@ -21,7 +21,7 @@ jTextField1set4.setText("");
 jTextField1set5.setText("");
 jTextField1set6.setText("");
 jTextField1set7.setText("");
-jTextField1set8.setText("");
+
 jTextField1set9.setText("");
 jComboBox1.removeAllItems();
 
@@ -51,7 +51,6 @@ jComboBox1.removeAllItems();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -60,7 +59,6 @@ jComboBox1.removeAllItems();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
@@ -115,16 +113,12 @@ jComboBox1.removeAllItems();
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 249, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Colleage Name");
+        jLabel7.setText("Department");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 293, 122, -1));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Aadhar Number(UNIQUE ID)");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 331, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Room Number");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 369, 122, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 122, 20));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Living Status");
@@ -148,11 +142,8 @@ jComboBox1.removeAllItems();
         jTextField7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 290, 263, -1));
 
-        jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 328, 253, -1));
-
         jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 366, 253, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 253, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 404, -1, -1));
@@ -228,7 +219,7 @@ setVisible(false);        // TODO add your handling code here:
        jTextField5.setText(rs.getString(5));
        jTextField6.setText(rs.getString(6));
        jTextField7.setText(rs.getString(7));
-       jTextField8.setText(rs.getString(8));
+    
        jTextField9.setText(rs.getString(9));
        jTextField9.setEditable(false);
        if(rs.getString(10).equals("living"))
@@ -264,7 +255,7 @@ String mothername=JTextField4.getText();
 String email=JTextField5.getText();
 String address=JTextField6.getText();
 String collaege=JTextField7.getText();
-String aadhaar=JTextField8.getText();
+
 String roomNo0JTextField9.getText();
 String status=(String)jComboBox1.getSelectedItem();
 try{
@@ -370,7 +361,6 @@ clear();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
@@ -380,7 +370,6 @@ clear();
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
