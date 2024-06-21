@@ -1,3 +1,9 @@
+import javax.swing.JButton;
+import java.sql.*;
+import Project.ConnectionProvider;
+import javax.swing.JOptionPane;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,6 +14,31 @@
  * @author Achira Wijesuriya
  */
 public class ManageRoom extends javax.swing.JFrame {
+    public void clear(){
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jCheckBox1.setSelected(false);
+        jCheckBox2.setSelected(false);
+        jTextField2.setBackground(new JButton().getBackground());
+        jTextField2.setForeground(new JButton().getForeground());
+        jTextField2.setEditable(false);
+    }
+    
+    public void tableDetails(){
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        dtm.setRowCount(0);
+        try{
+            Connection con = java.getCon();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select *from room");
+            while(rs.next()){
+                dtm.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
     /**
      * Creates new form ManageRoom
@@ -67,6 +98,11 @@ public class ManageRoom extends javax.swing.JFrame {
         jLabel2.setText("Room Number");
 
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Activate or Not");
 
@@ -77,6 +113,11 @@ public class ManageRoom extends javax.swing.JFrame {
         jCheckBox2.setText("Yes");
 
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Update");
 
@@ -186,6 +227,38 @@ public class ManageRoom extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        String RoomNumber=jTextField1.getText();
+        String activate;
+        String roomStatus="Not Booked";
+        if(jCheckBox1.isSelected()){
+            activate="Yes";
+        }else{
+            activate="No";
+            
+            try{
+                Connection con = ConnectionProvider.getCon();
+                PreparedStatement ps = con.prepareStatement("insert into room values(?,?,?)");
+                ps.setString(1, RoomNumber);
+                ps.setString(2, activate);
+                ps.setString(3, roomStatus);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Successfull");
+                tableDetails();
+                clear();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String roomnumber
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
